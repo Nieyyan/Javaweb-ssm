@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 核心：扫描 Service 层 +  Dao层（MyBatis的Mapper）-->
+    <context:component-scan base-package="com.woxueit.ssm.service"/>
+
+    <!-- 1. 扫描 Controller -->
+    <context:component-scan base-package="com.woxueit.ssm.controller"/>
+
+    <!-- 2. 开启 SpringMVC 注解驱动 + 适配JSON全局乱码 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 3. 静态资源放行 -->
+    <mvc:default-servlet-handler/>
+
+    <!-- 4. 视图解析器（可不用，前后端分离一般注释） -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!-- 5. 核心：扫描 Service 层 +  Dao层（MyBatis的Mapper）-->
+    <context:component-scan base-package="com.woxueit.ssm.service"/>
+    <!-- id 必须为 multipartResolver，Spring 强制要求 -->
+    <!-- 6. 文件上传解析器：Spring6 唯一支持的写法（无第三方依赖） -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+        <!-- 只需要这一行，其他配置全部挪到 web.xml 中 -->
+    </bean>
+</beans>

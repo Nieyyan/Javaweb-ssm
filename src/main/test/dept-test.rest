@@ -1,0 +1,11 @@
+### 测试GET请求
+GET http://localhost:8080/dept/list
+Accept: application/json
+
+### 测试POST请求
+POST http://localhost:8080/dept/add
+Content-Type: application/x-www-form-urlencoded
+
+deptName = 研发4部 &
+createTime = 2026-05-14 &
+updateTime = 2026-05-15
