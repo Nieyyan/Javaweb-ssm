@@ -3,11 +3,17 @@ This is a comprehensive course assignment for Java Web development.
 
 ## Tech Stack
 Java
+
 Spring 6.2.18
+
 SpringMVC 6
+
 MyBatis 3.5.16
+
 MySQL 8.0
+
 Maven
+
 JDK 17
 
 ## Project Introduction
