@@ -84,6 +84,14 @@ Javaweb-ssm-maven
 | `/dept/add` | POST | Add department (form submission) |
 | `/dept/add2` | POST | Add department (JSON submission, requires `@RequestBody`) |
 
+### Testing
+- REST API tests included (IntelliJ HTTP Client / .rest files)
+- Test location: `src/main/test/`
+- Sample test: `dept-test.rest`## Testing
+- REST API tests included (IntelliJ HTTP Client / .rest files)
+- Test location: `src/main/test/`
+- Sample test: `dept-test.rest`
+
 ## The problem I met
 I used ***Spring 6*** and ***Jakarta Servlet API 6.0*** in my pom.xml at first,so when i used my ***Tomcat 8.5*** to run the project,and resulted in startup errors
 
